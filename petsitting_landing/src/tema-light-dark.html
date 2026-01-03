@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Agendamiento · Theme Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      color-scheme: light dark;
+      --color-background: #f8fafc;
+      --color-surface: #ffffff;
+      --color-surface-muted: #f1f5f9;
+      --color-primary: #fb923c;
+      --color-primary-strong: #c2410c;
+      --color-accent: #14b8a6;
+      --color-text: #0f172a;
+      --color-muted: #475569;
+      --gradient-hero: linear-gradient(135deg, #fb923c33, #f97316);
+      --shadow-soft: 0 18px 35px rgba(15, 23, 42, 0.15);
+      font-family: "Manrope", "Noto Sans", system-ui, sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --color-background: #030712;
+      --color-surface: #0f172a;
+      --color-surface-muted: #1e293b;
+      --color-primary: #5eead4;
+      --color-primary-strong: #0f766e;
+      --color-accent: #f97316;
+      --color-text: #f8fafc;
+      --color-muted: #94a3b8;
+      --gradient-hero: linear-gradient(135deg, #0f172a, #0f766e 65%);
+      --shadow-soft: 0 18px 40px rgba(2, 6, 23, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--color-background);
+      color: var(--color-text);
+      min-height: 100vh;
+      font-family: "Noto Sans", system-ui, sans-serif;
+      line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    header h1 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: 0.02em;
+    }
+
+    header .theme-controls {
+      display: flex;
+      gap: 8px;
+    }
+
+    .button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .button.primary {
+      background: var(--color-primary);
+      color: var(--color-surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .button.accent {
+      background: var(--color-accent);
+      color: #fff;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      border-radius: 20px;
+      padding: 48px;
+      background: var(--gradient-hero);
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 32px;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 3.5vw, 3.4rem);
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin-bottom: 16px;
+      max-width: 600px;
+    }
+
+    .hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .panel {
+      background: var(--color-surface);
+      padding: 24px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+    }
+
+    .panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .panel li {
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: var(--color-surface-muted);
+      color: var(--color-muted);
+      font-size: 0.95rem;
+    }
+
+    .schedule {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .slot {
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(15, 23, 42, 0.25));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme="dark"] .slot {
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.65));
+      border-color: rgba(255, 255, 255, 0.04);
+    }
+
+    .slot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .slot:hover::after {
+      opacity: 1;
+    }
+
+    .slot strong {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .slot span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .cta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 32px;
+      border-radius: 24px;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .cta strong {
+      font-size: 1.8rem;
+    }
+
+    .themes {
+      margin-top: 32px;
+    }
+
+    .theme-card {
+      border-radius: 18px;
+      padding: 24px;
+      background: var(--color-surface);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 18px;
+    }
+
+    .theme-card h4 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 12px;
+    }
+
+    .swatch {
+      border-radius: 12px;
+      padding: 12px;
+      display: grid;
+      gap: 6px;
+      font-size: 0.95rem;
+      background: var(--color-surface-muted);
+      color: var(--color-muted);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .swatch span {
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .theme-footer {
+      padding: 24px;
+      border-radius: 20px;
+      background: var(--color-background);
+      border: 1px dashed rgba(15, 23, 42, 0.25);
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 32px 24px;
+      }
+
+      .cta {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="page">
+    <header>
+      <h1>Guía de temas · Agendamiento</h1>
+      <div class="theme-controls">
+        <button class="button primary" data-theme-btn="light">Modo claro</button>
+        <button class="button accent" data-theme-btn="dark">Modo oscuro</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="badge">Toma horas inteligente</div>
+      <h2>Agenda una visita para tu mascota sin perder tiempo.</h2>
+      <p>
+        Inspira confianza con un diseño limpio en modo claro y un fondo envolvente en modo oscuro. Cada sección
+        utiliza variables para mantener la consistencia entre componentes y facilitar la creación de nuevas
+        pantallas.
+      </p>
+      <button class="button primary">Ver flujos</button>
+    </section>
+
+    <div class="grid">
+      <article class="panel">
+        <h3>Informes clave</h3>
+        <ul>
+          <li>Indicadores de disponibilidad en tiempo real.</li>
+          <li>Notas breves del cuidador y nivel de cuidado.</li>
+          <li>Acciones sugeridas: reservar rápido, cambiar horario.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h3>Segmentos de usuarios</h3>
+        <ul>
+          <li>Familias urbanas: valoran claridad y rapidez.</li>
+          <li>Dueños de mascotas senior: esperan contraste alto.</li>
+          <li>Profesionales móviles: necesitan acceso desde el celular.</li>
+        </ul>
+      </article>
+      <article class="panel">
+        <h3>Accesibilidad</h3>
+        <ul>
+          <li>Contraste 4.9:1 en modo claro.</li>
+          <li>Contraste 5.5:1 en modo oscuro.</li>
+          <li>Botones grandes y foco visible.</li>
+        </ul>
+      </article>
+    </div>
+
+    <section class="schedule">
+      <div class="slot">
+        <strong>09:00 · Paseo mañanero</strong>
+        <span>30min • Parque Central</span>
+        <p>Cuidador: Martina G. · Verificada</p>
+      </div>
+      <div class="slot">
+        <strong>11:30 · Visita entretenida</strong>
+        <span>45min • En casa</span>
+        <p>Cuidador: Roberto · Experto en entrenamiento.</p>
+      </div>
+      <div class="slot">
+        <strong>17:15 · Cena relajante</strong>
+        <span>60min • Rutina nocturna</span>
+        <p>Cuidadora: Elena S. · Calmante & nutrición.</p>
+      </div>
+    </section>
+
+    <section class="cta">
+      <strong>Zona final</strong>
+      <p>
+        Refuerza el paso a la acción con un gradiente envolvente y una llamada clara. Mantén el texto corto y enfocado,
+        y presenta la información de entrega más reciente junto al CTA.
+      </p>
+      <button class="button primary">Continuar con reserva</button>
+    </section>
+
+    <section class="themes">
+      <div class="theme-card">
+        <h4>Modo claro</h4>
+        <div class="swatch-grid">
+          <div class="swatch">
+            <span>#f8fafc</span>
+            Fondo general
+          </div>
+          <div class="swatch">
+            <span>#ffffff</span>
+            Superficie principal
+          </div>
+          <div class="swatch">
+            <span>#fb923c</span>
+            Primario y CTA
+          </div>
+          <div class="swatch">
+            <span>#0f172a</span>
+            Texto dominante
+          </div>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <h4>Modo oscuro</h4>
+        <div class="swatch-grid">
+          <div class="swatch">
+            <span>#030712</span>
+            Fondo general
+          </div>
+          <div class="swatch">
+            <span>#0f172a</span>
+            Superficie principal
+          </div>
+          <div class="swatch">
+            <span>#5eead4</span>
+            Primario y CTA
+          </div>
+          <div class="swatch">
+            <span>#f8fafc</span>
+            Texto dominante
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="theme-footer">
+      <p>
+        Cada componente reutiliza las variables definidas en la raíz para mantener coherencia. El switch de temas solo
+        modifica el atributo <code>data-theme</code> del <code>body</code>, y los colores secundarios responden con
+        variantes de la paleta. Copia este archivo como referencia para futuras landings de agendamiento.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll("[data-theme-btn]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.body.setAttribute("data-theme", btn.dataset.themeBtn);
+      });
+    });
+  </script>
+</body>
+</html>
