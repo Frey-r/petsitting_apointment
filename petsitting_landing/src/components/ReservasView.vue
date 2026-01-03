@@ -332,7 +332,11 @@ const isSlotBooked = (date, time) => {
 
 const fetchBookedSlots = async () => {
   try {
-    const response = await fetch('https://n8n.ebachmann.dev/webhook/aa1bca29-c8d5-4fb4-b853-62abeb5bb84a')
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'https://n8n.ebachmann.dev/webhook/'
+    const appointmentsEndpoint = 'aa1bca29-c8d5-4fb4-b853-62abeb5bb84a'
+    const apiUrl = `${apiBaseUrl}${appointmentsEndpoint}`
+    
+    const response = await fetch(apiUrl)
     const data = await response.json()
     bookedSlots.value = data
     console.log('Fetched booked slots:', data)
