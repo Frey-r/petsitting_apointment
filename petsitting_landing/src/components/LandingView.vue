@@ -336,9 +336,10 @@ onMounted(() => {
   top: 0;
   width: 100%;
   z-index: 100;
-  background: rgba(var(--color-background-rgb, 248, 250, 252), 0.9);
+  background: color-mix(in srgb, var(--color-background) 95%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .header-content {
