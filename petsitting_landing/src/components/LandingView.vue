@@ -28,181 +28,278 @@ onMounted(() => {
           </div>
           <h1>VetHome Care</h1>
         </div>
+        
+        <nav class="desktop-nav">
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#how-it-works" class="nav-link">How it Works</a>
+          <a href="#" class="nav-link">About Us</a>
+          <button class="login-btn">Log in</button>
+        </nav>
+
         <div class="header-actions">
-          <button class="btn-theme" @click="toggleTheme">
+          <button class="btn-theme" @click="toggleTheme" title="Cambiar tema">
             <span class="material-symbols-outlined">
               {{ themeStore.current === 'light' ? 'dark_mode' : 'light_mode' }}
             </span>
           </button>
-          <button class="login-btn">Log in</button>
+          <button class="book-btn-nav desktop-only" @click="startBooking">
+            <span>Book Now</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+          <button class="mobile-menu-btn md-hidden">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
         </div>
       </div>
     </header>
 
     <main class="main-content">
       <!-- Hero Section -->
-      <section class="hero">
-        <div class="hero-image" data-alt="A happy golden retriever dog receiving a checkup from a vet">
-          <div class="hero-overlay">
-            <div class="hero-text">
-              <div class="badge">
-                <span class="material-symbols-outlined badge-icon">verified</span>
-                <span class="badge-text">Certified Vets</span>
+      <section class="hero-container">
+        <div class="hero">
+          <div class="hero-image" data-alt="A happy golden retriever dog receiving a checkup from a vet">
+            <div class="hero-overlay">
+              <div class="hero-text">
+                <div class="badge">
+                  <span class="material-symbols-outlined badge-icon">verified</span>
+                  <span class="badge-text">Certified Vets</span>
+                </div>
+                <h2>Expert Vet Care, Right <br class="desktop-only"/>at Your Doorstep</h2>
+                <p>Professional home check-ups and loving petsitting services without the travel stress.</p>
+                <div class="hero-cta">
+                  <button class="btn-primary-lg" @click="startBooking">
+                    <span>Book a Visit</span>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                  </button>
+                </div>
               </div>
-              <h2>Expert Vet Care, Right at Your Doorstep</h2>
-              <p>Professional home check-ups and loving petsitting services without the travel stress.</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Why Choose Section -->
-      <section class="why-choose">
-        <div class="section-header">
+      <section class="why-choose section-padding">
+        <div class="section-header centered">
           <h2>Why choose home care?</h2>
-          <p>We bring the clinic to your living room, ensuring your pet stays comfortable and happy.</p>
+          <p>We bring the clinic to your living room, ensuring your pet stays comfortable and happy in their own environment.</p>
         </div>
         <div class="features-grid">
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
+          <div class="feature-card group">
+            <div class="feature-icon-wrapper accent-green">
               <span class="material-symbols-outlined feature-icon">home</span>
             </div>
-            <div>
+            <div class="feature-info">
               <h3>Stress-Free</h3>
-              <p>No car rides or waiting rooms.</p>
+              <p>No car rides or waiting rooms. Keep your pet calm in their safe space.</p>
             </div>
           </div>
-          <div class="feature-card">
-            <div class="feature-icon-wrapper">
+          <div class="feature-card group">
+            <div class="feature-icon-wrapper accent-blue">
               <span class="material-symbols-outlined feature-icon">verified_user</span>
             </div>
-            <div>
+            <div class="feature-info">
               <h3>Certified Pros</h3>
-              <p>Fully licensed vets & sitters.</p>
+              <p>Fully licensed vets & sitters with years of experience and love for animals.</p>
             </div>
           </div>
-          <div class="feature-card wide">
-            <div class="feature-icon-wrapper">
+          <div class="feature-card group">
+            <div class="feature-icon-wrapper accent-gold">
               <span class="material-symbols-outlined feature-icon">schedule</span>
             </div>
-            <div>
+            <div class="feature-info">
               <h3>Flexible Time</h3>
-              <p>Book appointments 7 days a week, 8am-8pm.</p>
+              <p>Book appointments 7 days a week, 8am-8pm. We work around your schedule.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- How It Works Section -->
-      <section class="how-it-works">
-        <h2>How It Works</h2>
-        <div class="steps text-[red]">
-          <div class="step-line"></div>
-          
-          <div class="step">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Create Profile</h3>
-              <p>Sign up and tell us about your pet's needs and medical history.</p>
+      <!-- How It Works & Services Grid -->
+      <div class="desktop-split-grid section-padding-bg">
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-it-works-inline">
+          <h2>How It Works</h2>
+          <div class="steps-vertical">
+            <div class="step-connector"></div>
+            <div class="step">
+              <div class="step-number-circle">1</div>
+              <div class="step-content">
+                <h3>Create Profile</h3>
+                <p>Sign up and tell us about your pet's needs, behavior, and medical history so we can match you best.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number-circle secondary-70">2</div>
+              <div class="step-content">
+                <h3>Select Service</h3>
+                <p>Choose from check-ups, vaccinations, or pet sitting and pick a time slot that works for you.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-number-circle secondary-40">3</div>
+              <div class="step-content">
+                <h3>Vet Arrives</h3>
+                <p>Our professional comes to your door fully equipped. Relax while we provide top-tier care.</p>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="step">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Select Service</h3>
-              <p>Choose from check-ups, vaccinations, or pet sitting and pick a time.</p>
-            </div>
-          </div>
-
-          <div class="step">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Vet Arrives</h3>
-              <p>Our professional comes to your door. Relax while we care for your pet.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Services Section -->
-      <section class="services">
-        <h2>Our Services</h2>
-        <div class="services-scroll">
-          
-          <div class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box">
-                <span class="material-symbols-outlined service-icon">medical_services</span>
+        <!-- Services Section -->
+        <section id="services" class="services-inline">
+          <h2>Our Services</h2>
+          <div class="services-grid-compact">
+            <div class="service-card-compact">
+              <div class="service-icon-circle">
+                <span class="material-symbols-outlined">medical_services</span>
               </div>
               <h3>Wellness Check</h3>
               <p>Full body exam</p>
-            </div>
-            <div class="service-footer">
-              <span class="price">$45+</span>
-              <div class="duration">
-                <span class="material-symbols-outlined duration-icon">timer</span>
-                <span>30 mins</span>
+              <div class="service-meta">
+                <span class="price-txt">$45+</span>
+                <span class="duration-txt">
+                  <span class="material-symbols-outlined icon-xs">schedule</span>
+                  30 mins
+                </span>
               </div>
             </div>
-          </div>
 
-          <div class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box">
-                <span class="material-symbols-outlined service-icon">pets</span>
+            <div class="service-card-compact">
+              <div class="service-icon-circle">
+                <span class="material-symbols-outlined">pets</span>
               </div>
               <h3>Pet Sitting</h3>
               <p>Companionship & feeding</p>
-            </div>
-            <div class="service-footer">
-              <span class="price">$30+</span>
-              <div class="duration">
-                <span class="material-symbols-outlined duration-icon">timer</span>
-                <span>60 mins</span>
+              <div class="service-meta">
+                <span class="price-txt">$30+</span>
+                <span class="duration-txt">
+                  <span class="material-symbols-outlined icon-xs">schedule</span>
+                  60 mins
+                </span>
               </div>
             </div>
-          </div>
 
-          <div class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box">
-                <span class="material-symbols-outlined service-icon">vaccines</span>
+            <div class="service-card-compact">
+              <div class="service-icon-circle">
+                <span class="material-symbols-outlined">vaccines</span>
               </div>
               <h3>Vaccinations</h3>
-              <p>Essential shots at home</p>
+              <p>Core & non-core shots</p>
+              <div class="service-meta">
+                <span class="price-txt">$35+</span>
+                <span class="duration-txt">
+                  <span class="material-symbols-outlined icon-xs">schedule</span>
+                  15 mins
+                </span>
+              </div>
             </div>
-            <div class="service-footer">
-              <span class="price">$25+</span>
-              <div class="duration">
-                <span class="material-symbols-outlined duration-icon">timer</span>
-                <span>15 mins</span>
+
+            <div class="service-card-compact">
+              <div class="service-icon-circle">
+                <span class="material-symbols-outlined">content_cut</span>
+              </div>
+              <h3>Grooming</h3>
+              <p>Nail trimming & care</p>
+              <div class="service-meta">
+                <span class="price-txt">$25+</span>
+                <span class="duration-txt">
+                  <span class="material-symbols-outlined icon-xs">schedule</span>
+                  20 mins
+                </span>
               </div>
             </div>
           </div>
-
-          <div class="service-card">
-            <div class="service-header">
-              <div class="service-icon-box">
-                <span class="material-symbols-outlined service-icon">medication_liquid</span>
-              </div>
-              <h3>Medication</h3>
-              <p>Prescription refills</p>
-            </div>
-            <div class="service-footer">
-              <span class="price">$20+</span>
-              <div class="duration">
-                <span class="material-symbols-outlined duration-icon">timer</span>
-                <span>10 mins</span>
-              </div>
-            </div>
+          <div class="view-all-link">
+            <a href="#">View all services <span class="material-symbols-outlined">arrow_forward</span></a>
           </div>
+        </section>
+      </div>
 
+      <!-- CTA Section -->
+      <section class="final-cta">
+        <div class="cta-banner">
+          <div class="cta-decoration-1"></div>
+          <div class="cta-decoration-2"></div>
+          <div class="cta-content">
+            <h2>Ready to skip the waiting room?</h2>
+            <p>Join thousands of happy pets and owners who have switched to stress-free home care. First visit is 10% off!</p>
+            <button class="btn-white" @click="startBooking">
+              <span>Book Your First Visit</span>
+            </button>
+            <p class="cta-note">No credit card required for booking</p>
+          </div>
         </div>
       </section>
     </main>
 
-    <div class="bottom-bar">
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="brand">
+              <div class="logo small">
+                <span class="material-symbols-outlined icon">pets</span>
+              </div>
+              <h3>VetHome Care</h3>
+            </div>
+            <p>Reimagining veterinary care with comfort, convenience, and compassion right in your own home.</p>
+            <div class="social-links">
+              <a href="#" class="social-icon">F</a>
+              <a href="#" class="social-icon">I</a>
+              <a href="#" class="social-icon">T</a>
+            </div>
+          </div>
+          
+          <div class="footer-links">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#">Wellness Exams</a></li>
+              <li><a href="#">Vaccinations</a></li>
+              <li><a href="#">Sick Visits</a></li>
+              <li><a href="#">Pet Sitting</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Vets</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h4>Contact</h4>
+            <div class="contact-item">
+              <span class="material-symbols-outlined">location_on</span>
+              <span>123 Pet Lover Lane, SF</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-symbols-outlined">phone</span>
+              <span>(555) 123-4567</span>
+            </div>
+            <div class="contact-item">
+              <span class="material-symbols-outlined">email</span>
+              <span>hello@vethomecare.com</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>© 2023 VetHome Care. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="bottom-bar mobile-only">
       <div class="bottom-bar-content">
         <button class="book-btn" @click="startBooking">
           <span>Book a Visit</span>
