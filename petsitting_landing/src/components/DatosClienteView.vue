@@ -38,7 +38,9 @@ onMounted(() => {
 <template>
   <div class="container">
     <div class="header-section">
-      <div class="header-spacer"></div>
+      <button class="btn-back" @click="handleBack">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </button>
       <span class="header-label">Agendar Petsitting</span>
       <button class="btn-theme" @click="toggleTheme">
         <span class="material-symbols-outlined">
@@ -177,8 +179,24 @@ onMounted(() => {
   z-index: 20;
 }
 
-.header-spacer {
+.btn-back {
   width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  z-index: 30;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background: var(--color-primary);
+  color: var(--color-surface);
 }
 
 .header-label {
