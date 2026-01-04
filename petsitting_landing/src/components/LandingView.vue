@@ -443,7 +443,7 @@ onMounted(() => {
 }
 
 .hero {
-  border-radius: 32px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-soft);
   height: 500px;
@@ -534,12 +534,18 @@ onMounted(() => {
   border-radius: 24px;
   border: 1px solid var(--color-border);
   text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
 }
 
 .feature-icon-wrapper {
   width: 64px;
   height: 64px;
-  border-radius: 20px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -548,9 +554,13 @@ onMounted(() => {
 
 .feature-icon { font-size: 32px; }
 
-.accent-green { background: #E6F4F1; color: #5B9FA1; }
-.accent-blue { background: #E6F0F4; color: #6DA7C0; }
-.accent-gold { background: #F4EFE6; color: var(--color-primary); }
+.accent-green { background: color-mix(in srgb, #5B9FA1 15%, transparent); color: #5B9FA1; }
+.accent-blue { background: color-mix(in srgb, #6DA7C0 15%, transparent); color: #6DA7C0; }
+.accent-gold { background: color-mix(in srgb, var(--color-primary) 15%, transparent); color: var(--color-primary); }
+
+body[data-theme="dark"] .accent-green { background: color-mix(in srgb, #88D1D3 20%, transparent); color: #88D1D3; }
+body[data-theme="dark"] .accent-blue { background: color-mix(in srgb, #91C8E0 20%, transparent); color: #91C8E0; }
+body[data-theme="dark"] .accent-gold { background: color-mix(in srgb, var(--color-primary) 20%, transparent); color: var(--color-primary); }
 
 .feature-info h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; }
 .feature-info p { color: var(--color-text-muted); font-size: 0.875rem; line-height: 1.6; }
@@ -624,12 +634,17 @@ onMounted(() => {
   border-radius: 24px;
   border: 1px solid var(--color-border);
   text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.service-card-compact:hover {
+  transform: translateY(-4px);
 }
 
 .service-icon-circle {
   width: 56px;
   height: 56px;
-  background: var(--color-surface-muted);
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
   color: var(--color-primary);
   border-radius: 50%;
   display: flex;
@@ -668,7 +683,7 @@ onMounted(() => {
 .final-cta { padding: 48px 16px; }
 .cta-banner {
   background: var(--color-primary);
-  border-radius: 40px;
+  border-radius: 24px;
   padding: 64px 24px;
   text-align: center;
   position: relative;

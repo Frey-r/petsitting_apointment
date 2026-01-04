@@ -6,11 +6,23 @@ export const useThemeStore = defineStore('theme', () => {
 
   function toggle() {
     current.value = current.value === 'light' ? 'dark' : 'light'
-    document.body.setAttribute('data-theme', current.value)
+    applyTheme(current.value)
+    localStorage.setItem('theme-preference', current.value)
+  }
+
+  function applyTheme(theme) {
+    document.body.setAttribute('data-theme', theme)
+    current.value = theme
   }
 
   function init() {
-    document.body.setAttribute('data-theme', current.value)
+    const saved = localStorage.getItem('theme-preference')
+    if (saved) {
+      applyTheme(saved)
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+      applyTheme(prefersDark ? 'dark' : 'light')
+    }
   }
 
   return {
