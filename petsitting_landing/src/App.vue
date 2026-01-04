@@ -1,10 +1,11 @@
 <script setup>
 import { ref } from 'vue'
+import LandingView from './components/LandingView.vue'
 import ReservasView from './components/ReservasView.vue'
 import DatosClienteView from './components/DatosClienteView.vue'
 import ConfirmacionView from './components/ConfirmacionView.vue'
 
-const currentStep = ref(1)
+const currentStep = ref(0)
 const formData = ref({
   name: '',
   email: '',
@@ -26,21 +27,25 @@ const goToNextStep = (data) => {
 }
 
 const goToPreviousStep = () => {
-  if (currentStep.value > 1) {
+  if (currentStep.value > 0) {
     currentStep.value--
   }
 }
 
 const handleFinish = () => {
-  currentStep.value = 1
+  currentStep.value = 0
   formData.value = { name: '', email: '', phone: '', serviceType: 'consulta-veterinaria' }
   reservationData.value = { selectedDay: null, selectedSlot: null }
 }
 </script>
 
 <template>
+  <LandingView
+    v-if="currentStep === 0"
+    @next="currentStep = 1"
+  />
   <DatosClienteView 
-    v-if="currentStep === 1"
+    v-else-if="currentStep === 1"
     @next="goToNextStep"
     @back="goToPreviousStep"
   />
