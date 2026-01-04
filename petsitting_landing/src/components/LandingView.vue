@@ -1,11 +1,21 @@
 <script setup>
-import { defineEmits } from 'vue'
+import { defineEmits, onMounted } from 'vue'
+import { useThemeStore } from '../stores/theme'
 
 const emit = defineEmits(['next'])
+const themeStore = useThemeStore()
 
 const startBooking = () => {
   emit('next')
 }
+
+const toggleTheme = () => {
+  themeStore.toggle()
+}
+
+onMounted(() => {
+  themeStore.init()
+})
 </script>
 
 <template>
@@ -18,7 +28,14 @@ const startBooking = () => {
           </div>
           <h1>VetHome Care</h1>
         </div>
-        <button class="login-btn">Log in</button>
+        <div class="header-actions">
+          <button class="btn-theme" @click="toggleTheme">
+            <span class="material-symbols-outlined">
+              {{ themeStore.current === 'light' ? 'dark_mode' : 'light_mode' }}
+            </span>
+          </button>
+          <button class="login-btn">Log in</button>
+        </div>
       </div>
     </header>
 
@@ -264,8 +281,33 @@ const startBooking = () => {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 8px;
+  padding: 8px 12px;
   transition: opacity 0.2s;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-theme {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-theme:hover {
+  background: var(--color-primary);
+  color: var(--color-surface);
 }
 
 .login-btn:hover {
@@ -445,10 +487,15 @@ const startBooking = () => {
 .how-it-works {
   background-color: var(--color-surface);
   padding: 32px 16px;
-  margin: 0 8px;
-  border-radius: 24px;
-  box-shadow: var(--shadow-card);
+  margin: 0; /* Removed 8px margin for alignment */
+  border-radius: 0; /* Changed to 0 to align with other sections or keep it if it's meant to be a full-width block */
+  box-shadow: none; /* Removed shadow to behave like a normal section */
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
+
+/* To keep the card look but align, let's just remove the outer margin and use padding */
+/* Actually, let's make it look like a section among others */
 
 .how-it-works h2 {
     font-size: 1.5rem;
