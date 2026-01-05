@@ -80,11 +80,12 @@ onMounted(() => {
 
       <!-- Why Choose Section -->
       <section class="why-choose section-padding">
-        <div class="section-header centered">
-          <h2>Why choose home care?</h2>
-          <p>We bring the clinic to your living room, ensuring your pet stays comfortable and happy in their own environment.</p>
-        </div>
-        <div class="features-grid">
+        <div class="content-container">
+          <div class="section-header centered">
+            <h2>Why choose home care?</h2>
+            <p>We bring the clinic to your living room, ensuring your pet stays comfortable and happy in their own environment.</p>
+          </div>
+          <div class="features-grid">
           <div class="feature-card group">
             <div class="feature-icon-wrapper accent-green">
               <span class="material-symbols-outlined feature-icon">home</span>
@@ -112,6 +113,7 @@ onMounted(() => {
               <p>Book appointments 7 days a week, 8am-8pm. We work around your schedule.</p>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -326,6 +328,11 @@ onMounted(() => {
 }
 
 .max-w-7xl {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.content-container {
   max-width: 1280px;
   margin: 0 auto;
 }
@@ -811,8 +818,8 @@ body[data-theme="dark"] .accent-gold { background: color-mix(in srgb, var(--colo
   .desktop-split-grid { 
     grid-template-columns: 1fr 1.2fr; 
     gap: 80px; 
-    max-width: 1280px;
-    margin: 0 auto;
+    max-width: 100%;
+    padding: 64px 48px;
   }
   
   .footer-top { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; }
