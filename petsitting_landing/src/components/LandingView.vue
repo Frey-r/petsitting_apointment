@@ -220,16 +220,18 @@ onMounted(() => {
 
       <!-- CTA Section -->
       <section class="final-cta">
-        <div class="cta-banner">
-          <div class="cta-decoration-1"></div>
-          <div class="cta-decoration-2"></div>
-          <div class="cta-content">
-            <h2>Ready to skip the waiting room?</h2>
-            <p>Join thousands of happy pets and owners who have switched to stress-free home care. First visit is 10% off!</p>
-            <button class="btn-white" @click="startBooking">
-              <span>Book Your First Visit</span>
-            </button>
-            <p class="cta-note">No credit card required for booking</p>
+        <div class="content-container">
+          <div class="cta-banner">
+            <div class="cta-decoration-1"></div>
+            <div class="cta-decoration-2"></div>
+            <div class="cta-content">
+              <h2>Ready to skip the waiting room?</h2>
+              <p>Join thousands of happy pets and owners who have switched to stress-free home care. First visit is 10% off!</p>
+              <button class="btn-white" @click="startBooking">
+                <span>Book Your First Visit</span>
+              </button>
+              <p class="cta-note">No credit card required for booking</p>
+            </div>
           </div>
         </div>
       </section>
@@ -321,7 +323,7 @@ onMounted(() => {
   background: var(--color-background);
 }
 
-.section-padding { padding: 48px 16px; }
+.section-padding { padding: 64px 16px; }
 .section-padding-bg { 
   padding: 64px 16px;
   background: var(--color-surface-muted);
@@ -525,19 +527,23 @@ onMounted(() => {
 }
 
 /* Why Choose */
-.section-header.centered { text-align: center; margin-bottom: 48px; }
+.why-choose {
+  padding: 64px 16px 80px;
+}
+
+.section-header.centered { text-align: center; margin-bottom: 56px; }
 .section-header h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
 .section-header p { color: var(--color-text-muted); max-width: 600px; margin: 0 auto; }
 
 .features-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 32px;
 }
 
 .feature-card {
   background: var(--color-surface);
-  padding: 32px;
+  padding: 40px 32px;
   border-radius: 24px;
   border: 1px solid var(--color-border);
   text-align: center;
@@ -687,11 +693,19 @@ body[data-theme="dark"] .accent-gold { background: color-mix(in srgb, var(--colo
 }
 
 /* Final CTA */
-.final-cta { padding: 48px 16px; }
+.final-cta { 
+  padding: 64px 16px 80px; 
+}
+
+.final-cta .content-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 .cta-banner {
   background: var(--color-primary);
   border-radius: 24px;
-  padding: 64px 24px;
+  padding: 64px 32px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -799,9 +813,16 @@ body[data-theme="dark"] .accent-gold { background: color-mix(in srgb, var(--colo
 
 /* Responsive Overrides */
 @media (min-width: 768px) {
-  .features-grid { grid-template-columns: repeat(3, 1fr); }
+  .features-grid { 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 32px;
+  }
   .services-grid-compact { grid-template-columns: repeat(2, 1fr); }
   .footer-top { grid-template-columns: repeat(2, 1fr); }
+  
+  .feature-card {
+    padding: 48px 40px;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -815,11 +836,31 @@ body[data-theme="dark"] .accent-gold { background: color-mix(in srgb, var(--colo
   .hero { height: 600px; }
   .hero-text h2 { font-size: 4rem; }
   
+  .why-choose {
+    padding: 80px 16px 96px;
+  }
+  
+  .section-header.centered { 
+    margin-bottom: 64px; 
+  }
+  
+  .features-grid { 
+    gap: 40px;
+  }
+  
+  .final-cta {
+    padding: 80px 16px 96px;
+  }
+  
+  .cta-banner {
+    padding: 80px 48px;
+  }
+  
   .desktop-split-grid { 
     grid-template-columns: 1fr 1.2fr; 
     gap: 80px; 
     max-width: 100%;
-    padding: 64px 48px;
+    padding: 80px 64px 96px;
   }
   
   .footer-top { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; }
