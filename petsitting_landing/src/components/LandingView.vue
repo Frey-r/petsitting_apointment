@@ -118,11 +118,13 @@ onMounted(() => {
       </section>
 
       <!-- How It Works & Services Grid -->
-      <div class="desktop-split-grid section-padding-bg">
-        <!-- How It Works Section -->
-        <section id="how-it-works" class="how-it-works-inline">
-          <h2>How It Works</h2>
-          <div class="steps-vertical">
+      <div class="desktop-split-grid">
+        <div class="content-container">
+          <div class="split-grid-content">
+            <!-- How It Works Section -->
+            <section id="how-it-works" class="how-it-works-inline">
+              <h2>How It Works</h2>
+              <div class="steps-vertical">
             <div class="step-connector"></div>
             <div class="step">
               <div class="step-number-circle">1</div>
@@ -145,13 +147,13 @@ onMounted(() => {
                 <p>Our professional comes to your door fully equipped. Relax while we provide top-tier care.</p>
               </div>
             </div>
-          </div>
-        </section>
+              </div>
+            </section>
 
-        <!-- Services Section -->
-        <section id="services" class="services-inline">
-          <h2>Our Services</h2>
-          <div class="services-grid-compact">
+            <!-- Services Section -->
+            <section id="services" class="services-inline">
+              <h2>Our Services</h2>
+              <div class="services-grid-compact">
             <div class="service-card-compact">
               <div class="service-icon-circle">
                 <span class="material-symbols-outlined">medical_services</span>
@@ -216,6 +218,8 @@ onMounted(() => {
             <a href="#">View all services <span class="material-symbols-outlined">arrow_forward</span></a>
           </div>
         </section>
+          </div>
+        </div>
       </div>
 
       <!-- CTA Section -->
@@ -580,6 +584,11 @@ body[data-theme="dark"] .accent-gold { background: color-mix(in srgb, var(--colo
 
 /* Desktop Split Grid */
 .desktop-split-grid {
+  background: var(--color-surface-muted);
+  padding: 64px 16px;
+}
+
+.split-grid-content {
   display: grid;
   grid-template-columns: 1fr;
   gap: 64px;
@@ -857,10 +866,12 @@ body[data-theme="dark"] .accent-gold { background: color-mix(in srgb, var(--colo
   }
   
   .desktop-split-grid { 
+    padding: 80px 16px 96px;
+  }
+  
+  .split-grid-content {
     grid-template-columns: 1fr 1.2fr; 
-    gap: 80px; 
-    max-width: 100%;
-    padding: 80px 64px 96px;
+    gap: 80px;
   }
   
   .footer-top { grid-template-columns: 1.5fr 1fr 1fr 1.2fr; }
